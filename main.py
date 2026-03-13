@@ -38,9 +38,24 @@ def polynomial_magic(list, next):
 
 def polynomial_magic(list):
     triangle, diag = polynomial_magic_stats(list)
+    return diag_processing(diag)
+
+
+def diag_processing(diag):
     length = len(diag)
     print("length", length)
-    print()
+
+    if length == 1:
+        return diag[0]
+    
+    pow_diag_end = 1
+    for i in range(length-1):#length 4, pow 3, pow_diag_end = 6
+        pow_diag_end *= (i + 1)
+    diag_end = diag[-1]/pow_diag_end
+
+    #change diag to subtract everything.
+
+    return diag_end, diag_processing(diag)
 
 
 def n_pow_x(n, x):#replaces any numbers with n^the number unless there are 2 or more dimensions
@@ -52,4 +67,4 @@ def combine_lists(A, B):
     return[a + b for a,b in zip(A, B)]
 
 #polynomial_magic([num**4 for num in range(6)])#y=x^4
-polynomial_magic(combine_lists(n_pow_x(2.5, range(4)), n_pow_x(1.5, range(4))))#y=2.5^x+1.5^x
+print(polynomial_magic(combine_lists(n_pow_x(2.5, range(4)), n_pow_x(1.5, range(4))))#y=2.5^x+1.5^x)
