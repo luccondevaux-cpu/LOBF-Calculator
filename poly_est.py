@@ -25,7 +25,7 @@ def diag_processing(diag, first):
         return ""
 
     if length == 1:
-        return str(diag[0])
+        return "+" + str(diag[0])
     
     pow_diag_end = 1
     for i in range(length-1):#length 4, pow 3, pow_diag_end = 6 is an example
@@ -48,3 +48,7 @@ def diag_processing(diag, first):
         return str(diag_end) + "*x^" + str(length-1) + diag_processing(diag, not first)
     first = True
     return "+" + str(diag_end) + "*x^" + str(length-1) + diag_processing(diag, not first)
+
+# How do I want to return it such that I could possibly combine with exponential stuff?
+# Just with strings that I analyze?
+# What's the best way to show those strings? I like how I have it rn I guess...
